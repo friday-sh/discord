@@ -1,14 +1,14 @@
-import { config } from "dotenv";
-config();
 import Discord from "discord.js";
 import fetch from "cross-fetch";
+import { config } from "dotenv";
+config();
 
 interface Client extends Discord.Client {
   owner: string;
 }
 
 const bot = new Discord.Client() as Client;
-bot.owner = "313731399968358401";
+bot.owner = process.env.DISCORD_OWNER_ID;
 
 const getCtx = async () => {
   const data = await fetch(`http://localhost:6060/location`).then((res) =>
